@@ -9,18 +9,18 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --orange: #E8712B;
-  --orange-dark: #d1621f;
-  --orange-light: #FFF3EB;
-  --dark: #1a1a2e;
-  --dark-soft: #2d2d44;
-  --cream: #FFFAF6;
+  --orange: #5b6e3e;
+  --orange-dark: #4a5a32;
+  --orange-light: #f0f3eb;
+  --dark: #1d1d1f;
+  --dark-soft: #333336;
+  --cream: #ffffff;
   --white: #ffffff;
-  --green: #2ecc71;
-  --green-dark: #27ae60;
-  --red: #e74c3c;
-  --gray: #6b7280;
-  --gray-light: #f3f4f6;
+  --green: #FF9800;
+  --green-dark: #e68a00;
+  --red: #c0392b;
+  --gray: #86868b;
+  --gray-light: #f5f5f7;
 }
 
 html { scroll-behavior: smooth; }
@@ -40,7 +40,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--dark);
+  background: #1d1d1f;
   color: white;
   padding: 10px 20px;
   display: flex;
@@ -82,7 +82,7 @@ body {
   text-align: center;
   padding: 60px 24px;
   position: relative;
-  background: linear-gradient(160deg, var(--dark) 0%, #16213e 50%, var(--dark-soft) 100%);
+  background: linear-gradient(160deg, #1d1d1f 0%, #2d2d2f 50%, #1d1d1f 100%);
   color: white;
   overflow: hidden;
 }
@@ -93,7 +93,7 @@ body {
   right: -30%;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(232,113,43,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -104,29 +104,55 @@ body {
   left: -20%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(232,113,43,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,152,0,0.06) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+}
+
+.scroll-arrows {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  animation: fadeInUp 0.6s ease 0.6s both;
+}
+.scroll-arrows span {
+  display: block;
+  font-size: 2rem;
+  line-height: 0.6;
+  color: rgba(255, 255, 255, 0.4);
+  animation: bounceArrow 2s infinite;
+}
+.scroll-arrows span:nth-child(2) { animation-delay: 0.15s; color: rgba(255, 255, 255, 0.55); }
+.scroll-arrows span:nth-child(3) { animation-delay: 0.3s; color: rgba(255, 255, 255, 0.7); }
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(8px); opacity: 1; }
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(232,113,43,0.15);
-  border: 1px solid rgba(232,113,43,0.3);
+  background: rgba(255,152,0,0.12);
+  border: 1px solid rgba(255,152,0,0.25);
   padding: 8px 20px;
   border-radius: 100px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--orange);
+  color: var(--green);
   margin-bottom: 32px;
   animation: fadeInDown 0.6s ease both;
 }
 .badge .dot {
   width: 8px;
   height: 8px;
-  background: var(--orange);
+  background: var(--green);
   border-radius: 50%;
   animation: pulse-dot 2s infinite;
 }
@@ -138,14 +164,15 @@ body {
 
 .hero h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 900;
-  line-height: 1.08;
-  max-width: 800px;
+  line-height: 1.12;
+  max-width: 1000px;
   margin-bottom: 24px;
   animation: fadeInDown 0.6s ease 0.1s both;
+  text-wrap: balance;
 }
-.hero h1 .accent { color: var(--orange); }
+.hero h1 .accent { color: #FF9800; }
 
 .hero .subtitle {
   font-size: clamp(1.1rem, 2.5vw, 1.35rem);
@@ -170,8 +197,9 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(3.5rem, 8vw, 5.5rem);
   font-weight: 900;
-  color: var(--orange);
+  color: #66BB6A;
   line-height: 1;
+  text-shadow: 0 0 30px rgba(102, 187, 106, 0.4);
 }
 .price-sub {
   font-size: 0.95rem;
@@ -194,7 +222,7 @@ body {
   cursor: pointer;
   transition: all 0.25s ease;
   animation: fadeInUp 0.6s ease 0.4s both;
-  box-shadow: 0 8px 30px rgba(46,204,113,0.3);
+  box-shadow: 0 8px 30px rgba(255,152,0,0.3);
   position: relative;
   overflow: hidden;
 }
@@ -212,7 +240,7 @@ body {
 .cta-main:hover {
   background: var(--green-dark);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(46,204,113,0.4);
+  box-shadow: 0 12px 40px rgba(255,152,0,0.4);
 }
 
 .hero-timer {
@@ -279,7 +307,7 @@ body {
 
 /* ============ WHAT YOU GET ============ */
 .section { padding: 80px 24px; }
-.section-dark { background: var(--dark); color: white; }
+.section-dark { background: var(--gray-light); color: var(--dark); }
 
 .container { max-width: 960px; margin: 0 auto; }
 
@@ -308,7 +336,7 @@ h2 {
   line-height: 1.6;
   margin-bottom: 48px;
 }
-.section-dark .section-sub { color: rgba(255,255,255,0.6); }
+.section-dark .section-sub { color: var(--gray); }
 
 /* Course Cards */
 .courses-grid {
@@ -327,7 +355,7 @@ h2 {
 }
 .course-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
 }
 .course-card .level-tag {
   display: inline-block;
@@ -388,7 +416,8 @@ h2 {
   padding: 48px 40px;
   max-width: 700px;
   margin: 0 auto;
-  border: 2px solid rgba(232,113,43,0.15);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 .value-row {
   display: flex;
@@ -449,27 +478,28 @@ h2 {
   gap: 24px;
 }
 .testimonial {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: white;
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 16px;
   padding: 32px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 .testimonial .stars {
-  color: #f1c40f;
+  color: #FF9800;
   font-size: 1rem;
   margin-bottom: 14px;
 }
 .testimonial blockquote {
   font-size: 0.95rem;
   line-height: 1.65;
-  opacity: 0.85;
+  color: var(--dark-soft);
   margin-bottom: 16px;
   font-style: italic;
 }
 .testimonial .author {
   font-size: 0.85rem;
   font-weight: 600;
-  opacity: 0.7;
+  color: var(--gray);
 }
 
 /* ============ FAQ ============ */
@@ -520,7 +550,7 @@ h2 {
 .final-cta {
   text-align: center;
   padding: 100px 24px;
-  background: var(--dark);
+  background: #1d1d1f;
   color: white;
   position: relative;
   overflow: hidden;
@@ -533,7 +563,7 @@ h2 {
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(232,113,43,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,152,0,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 .final-cta h2 {
@@ -568,7 +598,7 @@ footer {
   padding: 32px 24px;
   font-size: 0.82rem;
   color: var(--gray);
-  background: var(--cream);
+  background: var(--gray-light);
 }
 
 /* ============ ANIMATIONS ============ */
@@ -602,6 +632,203 @@ footer {
   .countdown .unit .num { font-size: 1.3rem; }
   .you-pay { flex-direction: column; gap: 4px; text-align: center; }
 }
+
+/* ============ PEEK INSIDE ============ */
+.peek-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+@media (max-width: 600px) {
+  .peek-grid { grid-template-columns: 1fr; }
+}
+.peek-card {
+  text-align: center;
+}
+.peek-card h4 {
+  margin-top: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.peek-card p {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+.peek-desc {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  opacity: 0.7;
+  line-height: 1.6;
+  text-align: center;
+}
+.peek-screen {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.peek-bar {
+  background: #e8e8e8;
+  padding: 10px 14px;
+  display: flex;
+  gap: 6px;
+}
+.peek-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.peek-body {
+  padding: 24px 20px 28px;
+  color: var(--dark);
+  text-align: left;
+}
+.peek-tag {
+  display: inline-block;
+  background: var(--orange-light);
+  color: var(--orange);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.peek-placeholder-video {
+  background: var(--dark);
+  color: white;
+  border-radius: 10px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+.peek-line {
+  height: 10px;
+  background: #eee;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+.peek-question {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.peek-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.peek-option {
+  padding: 8px 18px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: default;
+}
+.peek-correct {
+  border-color: var(--green);
+  background: #f0f3eb;
+  color: var(--green-dark);
+}
+.peek-vocab-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+.peek-vocab-row:last-child { border-bottom: none; }
+.peek-nl { font-weight: 700; }
+.peek-en { opacity: 0.5; }
+
+/* ============ MEET YOUR TEACHER ============ */
+.teacher-section {
+  background: var(--gray-light);
+}
+.teacher-card {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 860px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 48px 44px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.teacher-photo {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b6e3e, #4a5a32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: white;
+  box-shadow: 0 8px 30px rgba(91,110,62,0.25);
+  border: 4px solid #FF9800;
+}
+.teacher-info h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--dark);
+}
+.teacher-info .teacher-role {
+  color: var(--orange);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+.teacher-info p {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.teacher-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.teacher-stat {
+  text-align: center;
+}
+.teacher-stat .stat-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FF9800;
+  display: block;
+}
+.teacher-stat .stat-label {
+  font-size: 0.78rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+@media (max-width: 640px) {
+  .teacher-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .teacher-photo { width: 160px; height: 160px; font-size: 3.5rem; }
+  .teacher-stats { justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -616,8 +843,8 @@ footer {
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="badge"><span class="dot"></span> Limited-Time Offer</div>
-  <h1>Alles wat je nodig hebt.<br><span class="accent">€97. Lifetime access.</span></h1>
-  <p class="subtitle">From zero to A2+ with self-paced video lessons, interactive exercises, and lifetime access. Normally €397 — now 75% off.</p>
+  <h1>From 0 to A2+ in Dutch. <span class="accent">€97. Lifetime access.</span></h1>
+  <p class="subtitle">Interactive exercises, hands on instruction videos and lifetime access. Normally €399, now affordable for everyone.</p>
 
   <div class="price-block">
     <span class="price-old">€397</span><br>
@@ -626,7 +853,7 @@ footer {
   </div>
 
   <a href="#buy" class="cta-main" id="heroCta">
-    Ik wil dit! — Get All 4 Courses →
+    Get the discounted courses →
   </a>
 
   <div class="hero-timer">
@@ -643,7 +870,42 @@ footer {
     <div class="avatars">
       <span>👩</span><span>👨</span><span>👩‍🦰</span><span>🧑</span>
     </div>
-    <span>500+ students already learning Dutch with SociaTaal</span>
+    <span>1,000+ students already learning Dutch with SociaTaal</span>
+  </div>
+
+  <div class="scroll-arrows">
+    <span>&#8964;</span>
+    <span>&#8964;</span>
+    <span>&#8964;</span>
+  </div>
+</section>
+
+<!-- ============ TRUSTED BY ============ -->
+<section class="section section-dark">
+  <div class="container" style="text-align: center;">
+    <div class="reveal">
+      <span class="section-label">Proven & Professional</span>
+      <h2>Trusted by 1,000+ Students<br>and Leading Companies</h2>
+      <p class="section-sub" style="max-width: 640px; margin-left: auto; margin-right: auto;">These aren't hobby courses thrown together overnight. They were originally developed for highly motivated professionals and corporate language programmes and have been completed by over 1,000 professionals all over the world.</p>
+      <p class="section-sub" style="max-width: 640px; margin-left: auto; margin-right: auto; margin-top: 16px;">Now, for the first time, I'm making them available to everyone — at a price that anyone can afford.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 16px;">
+      <div class="reveal" style="padding: 24px;">
+        <div style="font-size: 2.5rem; margin-bottom: 12px;">🏢</div>
+        <h4 style="margin-bottom: 8px; font-size: 1.1rem;">Corporate-Grade Quality</h4>
+        <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.5;">Built for professional training programmes at major Dutch corporations.</p>
+      </div>
+      <div class="reveal" style="padding: 24px;">
+        <div style="font-size: 2.5rem; margin-bottom: 12px;">👥</div>
+        <h4 style="margin-bottom: 8px; font-size: 1.1rem;">1,000+ Graduates</h4>
+        <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.5;">Over a thousand professionals have successfully completed these courses.</p>
+      </div>
+      <div class="reveal" style="padding: 24px;">
+        <div style="font-size: 2.5rem; margin-bottom: 12px;">💡</div>
+        <h4 style="margin-bottom: 8px; font-size: 1.1rem;">Now for Everyone</h4>
+        <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.5;">The same proven curriculum, now accessible at a fraction of the original price.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -653,7 +915,7 @@ footer {
     <div class="reveal">
       <span class="section-label">What's Inside</span>
       <h2>4 Complete Dutch Courses,<br>One Ridiculously Low Price</h2>
-      <p class="section-sub">Each course is packed with lessons, exercises, and real-world practice — designed to actually get you speaking Dutch, not just studying it.</p>
+      <p class="section-sub">Each course is packed with lessons, exercises, and real-world practice — designed to actually get you understanding and using Dutch, not just studying it.</p>
     </div>
 
     <div class="courses-grid">
@@ -677,7 +939,7 @@ footer {
         <ul class="includes">
           <li>Video lessons with clear explanations</li>
           <li>Interactive grammar exercises</li>
-          <li>Speaking & pronunciation practice</li>
+          <li>Real-life dialogues & audio</li>
           <li>Cultural tips for daily life</li>
         </ul>
         <div class="individual-price">Standalone price: <strong>€99</strong></div>
@@ -712,10 +974,80 @@ footer {
   </div>
 </section>
 
+<!-- ============ LOOK INSIDE ============ -->
+<section class="section section-dark">
+  <div class="container" style="text-align: center;">
+    <div class="reveal">
+      <span class="section-label">A Look Inside</span>
+      <h2>See What the Courses Look Like</h2>
+      <p class="section-sub" style="max-width: 600px; margin-left: auto; margin-right: auto;">Each level is packed with structured lessons, clear explanations, and interactive exercises. Here's a taste of what's waiting for you inside.</p>
+    </div>
+
+    <div class="peek-grid">
+      <div class="peek-card reveal">
+        <div class="peek-screen">
+          <div class="peek-bar">
+            <span class="peek-dot" style="background:#e74c3c"></span>
+            <span class="peek-dot" style="background:#f39c12"></span>
+            <span class="peek-dot" style="background:#5b6e3e"></span>
+          </div>
+          <div class="peek-body" style="padding: 0;">
+            <!-- Replace src with your screenshot -->
+            <img src="course content 1.png" alt="Course screenshot 1" style="width: 100%; height: 280px; object-fit: cover; object-position: top; display: block;">
+          </div>
+        </div>
+        <p class="peek-desc">Immersive reading exercises with illustrated scenes and audio — learn Dutch in real-life contexts like describing an apartment.</p>
+      </div>
+
+      <div class="peek-card reveal">
+        <div class="peek-screen">
+          <div class="peek-bar">
+            <span class="peek-dot" style="background:#e74c3c"></span>
+            <span class="peek-dot" style="background:#f39c12"></span>
+            <span class="peek-dot" style="background:#5b6e3e"></span>
+          </div>
+          <div class="peek-body" style="padding: 0;">
+            <img src="course content 2.png" alt="Course screenshot 2" style="width: 100%; height: 280px; object-fit: cover; object-position: top; display: block;">
+          </div>
+        </div>
+        <p class="peek-desc">Follow characters like Silvia and Max through story-driven lessons with listening exercises to train your ear for natural Dutch.</p>
+      </div>
+
+      <div class="peek-card reveal">
+        <div class="peek-screen">
+          <div class="peek-bar">
+            <span class="peek-dot" style="background:#e74c3c"></span>
+            <span class="peek-dot" style="background:#f39c12"></span>
+            <span class="peek-dot" style="background:#5b6e3e"></span>
+          </div>
+          <div class="peek-body" style="padding: 0;">
+            <img src="course content 3.png" alt="Course screenshot 3" style="width: 100%; height: 280px; object-fit: cover; object-position: top; display: block;">
+          </div>
+        </div>
+        <p class="peek-desc">Build your vocabulary with visual aids and audio — from describing people to everyday conversations, each topic is clearly structured.</p>
+      </div>
+
+      <div class="peek-card reveal">
+        <div class="peek-screen">
+          <div class="peek-bar">
+            <span class="peek-dot" style="background:#e74c3c"></span>
+            <span class="peek-dot" style="background:#f39c12"></span>
+            <span class="peek-dot" style="background:#5b6e3e"></span>
+          </div>
+          <div class="peek-body" style="padding: 0;">
+            <img src="course content 4.png" alt="Course screenshot 4" style="width: 100%; height: 280px; object-fit: cover; object-position: top; display: block;">
+          </div>
+        </div>
+        <p class="peek-desc">Practice grammar hands-on with fill-in exercises — like adjectives, comparatives, and superlatives — so the rules actually stick.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ VALUE STACK ============ -->
 <section class="section" style="padding-top: 0;">
   <div class="container">
-    <div class="value-stack reveal">
+    <div class="value-stack reveal" style="margin-top: 40px;">
       <span class="section-label">The Math Doesn't Lie</span>
       <h2 style="margin-bottom: 32px;">Here's What You're Getting</h2>
 
@@ -741,7 +1073,7 @@ footer {
       </div>
       <div class="you-pay">
         <span>You Pay Today</span>
-        <span class="val">€97</span>
+        <span class="val" style="color: #66BB6A;">€97</span>
       </div>
       <div class="savings-tag">🎉 You save €300 — that's 75% off!</div>
     </div>
@@ -753,7 +1085,7 @@ footer {
   <div class="container" style="text-align: center;">
     <div class="reveal">
       <span class="section-label">Why Self-Paced?</span>
-      <h2>Jouw tempo. Jouw planning.<br>Geen excuses.</h2>
+      <h2>Your pace. Your planning.<br>No excuses.</h2>
       <p class="section-sub" style="margin-left: auto; margin-right: auto;">Your schedule, your pace. No waiting for group slots. No rushing through material. Just you, the course, and real progress — whenever you want.</p>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 16px;">
@@ -775,7 +1107,7 @@ footer {
       <div class="reveal" style="padding: 24px;">
         <div style="font-size: 2.5rem; margin-bottom: 12px;">💡</div>
         <h4 style="margin-bottom: 8px; font-size: 1.1rem;">Built by Experts</h4>
-        <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.5;">Created by SociaTaal — not random internet content, but a proven method.</p>
+        <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.5;">Not random internet content, but a proven method.</p>
       </div>
     </div>
   </div>
@@ -788,21 +1120,38 @@ footer {
       <span class="section-label">What Students Say</span>
       <h2 style="margin-bottom: 48px;">Real People, Real Results</h2>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <blockquote>"I tried Duolingo for months and barely got anywhere. SociaTaal's structure is completely different — I actually understand Dutch now."</blockquote>
-        <div class="author">— Sarah M., United Kingdom</div>
-      </div>
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <blockquote>"The exercises are so well thought out. I went from nothing to having conversations with my Dutch colleagues in just a few months."</blockquote>
-        <div class="author">— Carlos R., Spain</div>
-      </div>
-      <div class="testimonial reveal">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Best money I've ever spent on language learning. The video lessons are clear and the exercises really stick."</blockquote>
-        <div class="author">— Priya K., India</div>
+    <script defer async src='https://cdn.trustindex.io/loader.js?6921e916842212948f06cc4176c'></script>
+  </div>
+</section>
+
+<!-- ============ MEET YOUR TEACHER ============ -->
+<section class="section teacher-section">
+  <div class="container">
+    <div class="reveal" style="text-align: center;">
+      <span class="section-label">Meet Your Teacher</span>
+      <h2 style="margin-bottom: 48px;">The Person Behind Every Lesson</h2>
+    </div>
+    <div class="teacher-card reveal">
+      <div class="teacher-photo"><img src="Profile Pic V3 900.png" alt="Koen Kleinstra" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></div>
+      <div class="teacher-info">
+        <h3>Koen Kleinstra</h3>
+        <div class="teacher-role">Founder & Lead Teacher at SociaTaal</div>
+        <p>I built these courses from scratch because I saw too many people struggle with Dutch using methods that simply don't work. Every video lesson features me walking you through the language step by step — explaining not just <em>what</em> to say, but <em>why</em> Dutch works the way it does.</p>
+        <p>With years of experience teaching Dutch to internationals, I designed this curriculum to get you speaking and understanding as quickly as possible — no filler, no fluff.</p>
+        <div class="teacher-stats">
+          <div class="teacher-stat">
+            <span class="stat-num">4</span>
+            <span class="stat-label">Courses</span>
+          </div>
+          <div class="teacher-stat">
+            <span class="stat-num">100+</span>
+            <span class="stat-label">Video Lessons</span>
+          </div>
+          <div class="teacher-stat">
+            <span class="stat-num">1000+</span>
+            <span class="stat-label">Students</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -822,7 +1171,7 @@ footer {
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">How is this different from Duolingo or free apps? <span class="icon">+</span></button>
-        <div class="faq-a"><p>Apps give you random exercises with no clear path. SociaTaal courses are structured, progressive, and built around real-world Dutch. You'll actually understand grammar, build vocabulary in context, and learn what native speakers really say.</p></div>
+        <div class="faq-a"><p>Apps give you random exercises with no clear path. SociaTaal courses are structured, progressive, and built around real-world Dutch. You'll actually understand grammar, build vocabulary in context, and learn how native speakers really use the language.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">I'm a complete beginner — is this for me? <span class="icon">+</span></button>
@@ -834,7 +1183,7 @@ footer {
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">What if I want more support later? <span class="icon">+</span></button>
-        <div class="faq-a"><p>These self-paced courses are a great foundation. If you want live coaching, speaking practice, or accountability — you can always upgrade to our Private Flex or Group Course paths. Many students start here and level up later.</p></div>
+        <div class="faq-a"><p>These self-paced courses are a great foundation. If you want live coaching or extra accountability — you can always upgrade to our Private Flex or Group Course paths. Many students start here and level up later.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Is there a refund policy? <span class="icon">+</span></button>
